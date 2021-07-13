@@ -8,7 +8,7 @@ namespace Player
     public class PlayerController : MonoBehaviour
     {
         [HideInInspector] public List<GameObject> PlayerKüpleri = new List<GameObject>();
-        [SerializeField] private float Speed = 0.6f;
+        [SerializeField] private float speed = 0.6f;
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject cubePrefab;
 
@@ -17,15 +17,13 @@ namespace Player
         void Update()
         {
             if (PlayerKüpleri.Count <= 0)
-            {
                 GameManager.Instance.SetGameOver();
-            }
+
             if (GameManager.Instance.GameState != GameStates.GAME)
                 return;
 
             MovePlayer();
             Limitation();
-            Debug.Log(PlayerKüpleri.Count);
         }
 
         private void Limitation()
@@ -49,7 +47,7 @@ namespace Player
                 if (_touch.phase == TouchPhase.Moved)
                 {
                     transform.position = new Vector3(
-                        transform.position.x + _touch.deltaPosition.x * Speed * Time.deltaTime,
+                        transform.position.x + _touch.deltaPosition.x * speed * Time.deltaTime,
                         transform.position.y,
                         transform.position.z);
                 }

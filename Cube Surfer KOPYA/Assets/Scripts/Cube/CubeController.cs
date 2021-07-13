@@ -4,8 +4,8 @@ using UnityEngine;
 using Player;
 public class CubeController : MonoBehaviour
 {
-    private  Rigidbody _rg;
-    private  PlayerController _playerKontrol;
+    private Rigidbody _rg;
+    private PlayerController _playerKontrol;
     private float _timer;
     private GameObject _targatCube;
     private bool _lavÜzerinde;
@@ -25,11 +25,11 @@ public class CubeController : MonoBehaviour
         {
             if (_obstacleNumber < 1)
             {
-                EngelProtokolü(col.gameObject);
+                Obstacle(col.gameObject);
                 _obstacleNumber++;
             }
         }
-        if(col.gameObject.CompareTag("yeni küp"))
+        if (col.gameObject.CompareTag("yeni küp"))
         {
             Destroy(col.gameObject);
             _playerKontrol.AddCube();
@@ -50,14 +50,14 @@ public class CubeController : MonoBehaviour
         }
     }
 
-    void EngelProtokolü(GameObject obje)
+    private void Obstacle(GameObject obje)
     {
         _playerKontrol.PlayerKüpleri.Remove(gameObject);
         _rg.constraints = RigidbodyConstraints.None;
         transform.parent = obje.transform.parent;
         Destroy(gameObject, 4f);
     }
-    void LavProtokolü(GameObject obje)
+    private void LavProtokolü(GameObject obje)
     {
         _playerKontrol.PlayerKüpleri.Remove(gameObject);
         _rg.constraints = RigidbodyConstraints.FreezeRotation;

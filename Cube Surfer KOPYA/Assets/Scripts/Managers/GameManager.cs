@@ -17,6 +17,8 @@ namespace Managers
         public static event Action<GameStates> OnGameStateChange;
         public LevelManager LevelManager;
         public CanvasManager canvasManager;
+
+
         private GameStates _gameState;
         public GameStates GameState
         {
